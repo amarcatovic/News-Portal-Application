@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News.WebAPI.Data;
 using System;
+using News.Persistence;
 
 namespace News.WebAPI.Data.Migrations
 {
