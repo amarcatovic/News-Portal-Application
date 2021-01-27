@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "News.Core": {
+      "commandName": "Project"
+    },
+    "News.WebAPI": {
+      "commandName": "Project"
+    }
+  }
+}
