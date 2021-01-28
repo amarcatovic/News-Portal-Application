@@ -28,8 +28,9 @@ namespace News.Core.Interfaces.Repositories
         /// <summary>
         /// Method that edits single news in database
         /// </summary>
+        /// <param name="newsId">News id</param>
         /// <param name="news">News object</param>
         /// <returns>true if edit is success, false otherwise</returns>
-        Task<bool> EditNewsAsync(Models.Domain.News news);
+        Task<bool> EditNewsAsync(int newsId, Models.Domain.News news);
     }
 }
