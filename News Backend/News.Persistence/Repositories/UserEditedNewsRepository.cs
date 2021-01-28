@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using News.Core.Interfaces.Repositories;
 using News.Core.Models.Domain;
@@ -30,6 +29,28 @@ namespace News.Persistence.Repositories
                 .Include(ued => ued.User)
                 .Where(ued => ued.UserId == userId)
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// Method that adds user and news after edit
+        /// </summary>
+        /// <param name="userId">user id</param>
+        /// <param name="newsId">news id</param>
+        /// <returns>UserEditedNews object</returns>
+        public async Task<UserEditedNews> AddUserEditAsync(string userId, int newsId)
+        {
+            var userEditedNews = new UserEditedNews()
+            {
+                UserId = userId,
+                NewsId = newsId,
+                DateEdited = DateTime.Now
+            };
+
+            await _context.AddAsync(userEditedNews);
+            if (await _context.SaveChangesAsync() < 0)
+                return null;
+
+            return userEditedNews;
         }
     }
 }

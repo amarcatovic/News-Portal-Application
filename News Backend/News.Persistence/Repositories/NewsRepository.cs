@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using News.Core.Interfaces.Repositories;
 
@@ -67,7 +65,9 @@ namespace News.Persistence.Repositories
             if (newsFromDb == null)
                 return false;
 
-            newsFromDb = news;
+            newsFromDb.Title = news.Title;
+            newsFromDb.Content = news.Content;
+            newsFromDb.CategoryId = news.CategoryId;
 
             return (await _context.SaveChangesAsync() >= 0);
         }

@@ -68,12 +68,13 @@ namespace News.News
         /// Method that maps dto to News object and calls repo.
         /// </summary>
         /// <param name="newsId">news id</param>
+        /// <param name="userId">user id</param>
         /// <param name="newsEditDto">NewsCreateEditDto object</param>
         /// <returns>true if edit is successful, false otherwise</returns>
         public async Task<bool> EditNewsAsync(int newsId, NewsCreateEditDto newsEditDto)
         {
             var news = _mapper.Map<Core.Models.Domain.News>(newsEditDto);
-            return await _newsRepository.EditNewsAsync(newsId, news);
+            return await _newsRepository.EditNewsAsync(newsId, news) && _userEditedNewsRepository.AddUserEditAsync(newsEditDto.UserId, newsId) != null;
         }
 
         /// <summary>

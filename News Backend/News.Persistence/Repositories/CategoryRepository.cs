@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Text;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using News.Core.Interfaces.Repositories;
 using News.Core.Models.Domain;
@@ -35,6 +33,7 @@ namespace News.Persistence.Repositories
         {
             return await _context.Categories
                 .Include(c => c.News)
+                .ThenInclude(n => n.User)
                 .SingleOrDefaultAsync(c => c.CategoryId == categoryId);
         }
     }
