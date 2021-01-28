@@ -19,6 +19,6 @@ namespace News.Core.Interfaces
         /// </summary>
         /// <param name="categoryId">Category id</param>
         /// <returns>CategoryReadAllNewsDto object</returns>
-        Task<CategoryReadAllNewsDto> GetAllCategoriesAndTheirNewsAsync(int categoryId);
+        Task<CategoryReadAllNewsDto> GetCategoryAndTheirNewsAsync(int categoryId);
     }
 }
