@@ -17,8 +17,8 @@ using System.Threading.Tasks;
 using News.Core.Models.Domain;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using News.Core.Helper;
 using News.Persistence;
+using News.Persistence.Helper;
 
 namespace News.WebAPI
 {
@@ -106,7 +106,7 @@ namespace News.WebAPI
                 endpoints.MapRazorPages();
             });
 
-            InitDatabase.Migrate(roleManager, userManager, Configuration).Wait();
+            InitDatabase.Migrate(roleManager, userManager, Configuration, app).Wait();
         }
     }
 }
