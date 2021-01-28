@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News.Persistence;
 
-namespace News.WebAPI.Data.Migrations
+namespace News.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -242,6 +242,11 @@ namespace News.WebAPI.Data.Migrations
 
             modelBuilder.Entity("News.Core.Models.Domain.News", b =>
                 {
+                    b.Property<int>("NewsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -252,9 +257,6 @@ namespace News.WebAPI.Data.Migrations
                     b.Property<DateTime>("DatePublished")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NewsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -262,7 +264,9 @@ namespace News.WebAPI.Data.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("NewsId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("Title");
 

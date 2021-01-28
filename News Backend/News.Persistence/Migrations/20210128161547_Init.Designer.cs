@@ -6,13 +6,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using News.Persistence;
-using News.WebAPI.Data;
 
-namespace News.WebAPI.Data.Migrations
+namespace News.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210127220624_AddUserNewsCategory")]
-    partial class AddUserNewsCategory
+    [Migration("20210128161547_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -245,6 +244,11 @@ namespace News.WebAPI.Data.Migrations
 
             modelBuilder.Entity("News.Core.Models.Domain.News", b =>
                 {
+                    b.Property<int>("NewsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -252,14 +256,8 @@ namespace News.WebAPI.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateEdited")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("DatePublished")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("NewsId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -268,13 +266,33 @@ namespace News.WebAPI.Data.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("NewsId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("Title");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("News.Core.Models.Domain.UserEditedNews", b =>
+                {
+                    b.Property<int>("NewsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("DateEdited")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("NewsId", "UserId", "DateEdited");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserEditedNews");
                 });
 
             modelBuilder.Entity("News.Core.Models.Domain.User", b =>
@@ -352,14 +370,40 @@ namespace News.WebAPI.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("News.Core.Models.Domain.UserEditedNews", b =>
+                {
+                    b.HasOne("News.Core.Models.Domain.News", "News")
+                        .WithMany("UserEditedNews")
+                        .HasForeignKey("NewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("News.Core.Models.Domain.User", "User")
+                        .WithMany("UserEditedNews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("News");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("News.Core.Models.Domain.Category", b =>
                 {
                     b.Navigation("News");
                 });
 
+            modelBuilder.Entity("News.Core.Models.Domain.News", b =>
+                {
+                    b.Navigation("UserEditedNews");
+                });
+
             modelBuilder.Entity("News.Core.Models.Domain.User", b =>
                 {
                     b.Navigation("News");
+
+                    b.Navigation("UserEditedNews");
                 });
 #pragma warning restore 612, 618
         }

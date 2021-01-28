@@ -10,7 +10,7 @@ namespace News.Persistence.Entity_Configuration
     {
         public void Configure(EntityTypeBuilder<Core.Models.Domain.News> builder)
         {
-            builder.HasKey(n => n.CategoryId);
+            builder.HasKey(n => n.NewsId);
 
             builder.HasIndex(n => n.Title);
 
