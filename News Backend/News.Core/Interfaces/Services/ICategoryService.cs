@@ -15,7 +15,7 @@ namespace News.Core.Interfaces
         Task<IEnumerable<CategoryReadDto>> GetAllCategoriesAsync();
 
         /// <summary>
-        /// Method that gets category and all news that belong to certain category
+        /// Method that gets single category and all news that belong to certain category
         /// </summary>
         /// <param name="categoryId">Category id</param>
         /// <returns>CategoryReadAllNewsDto object</returns>
