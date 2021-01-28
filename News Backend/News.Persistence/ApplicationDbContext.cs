@@ -11,6 +11,8 @@ namespace News.Persistence
 
         public DbSet<Core.Models.Domain.News> News { get; set; }
 
+        public DbSet<UserEditedNews> UserEditedNews { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\News.Category\News.Category.csproj" />
     <ProjectReference Include="..\News.Core\News.Core.csproj" />
+    <ProjectReference Include="..\News.News\News.News.csproj" />
     <ProjectReference Include="..\News.Persistence\News.Persistence.csproj" />
   </ItemGroup>
 

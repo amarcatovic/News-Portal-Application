@@ -17,8 +17,13 @@ using System.Threading.Tasks;
 using News.Core.Models.Domain;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using News.Category;
+using News.Core.Interfaces;
+using News.Core.Interfaces.Repositories;
+using News.News;
 using News.Persistence;
 using News.Persistence.Helper;
+using News.Persistence.Repositories;
 
 namespace News.WebAPI
 {
@@ -72,6 +77,13 @@ namespace News.WebAPI
                 });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<IUserEditedNewsRepository, UserEditedNewsRepository>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<INewsService, NewsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
