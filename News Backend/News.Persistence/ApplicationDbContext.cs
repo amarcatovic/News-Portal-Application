@@ -20,6 +20,7 @@ namespace News.Persistence
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new NewsEntityConfiguration());
+            builder.ApplyConfiguration(new UserEditedNewsConfiguration());
         }
     }
 }

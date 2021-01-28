@@ -9,9 +9,12 @@ namespace News.Core.Models.Domain
     {
         public ICollection<News> News { get; set; }
 
+        public ICollection<UserEditedNews> UserEditedNews { get; set; }
+
         public User()
         {
             News = new HashSet<News>();
+            UserEditedNews = new HashSet<UserEditedNews>();
         }
     }
 }

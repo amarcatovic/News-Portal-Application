@@ -14,8 +14,6 @@ namespace News.Core.Models.Dtos.News
 
         public DateTime DatePublished { get; set; }
 
-        public DateTime DateEdited { get; set; }
-
         public string Category { get; set; }
 
         public string Author { get; set; }

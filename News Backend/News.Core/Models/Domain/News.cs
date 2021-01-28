@@ -14,8 +14,6 @@ namespace News.Core.Models.Domain
 
         public DateTime DatePublished { get; set; }
 
-        public DateTime DateEdited { get; set; }
-
         public Category Category { get; set; }
 
         public int CategoryId { get; set; }
@@ -24,9 +22,12 @@ namespace News.Core.Models.Domain
 
         public string UserId { get; set; }
 
+        public ICollection<UserEditedNews> UserEditedNews { get; set; }
+
         public News()
         {
-            DatePublished = DateEdited = DateTime.Now;
+            DatePublished = DateTime.Now;
+            UserEditedNews = new HashSet<UserEditedNews>();
         }
     }
 }
