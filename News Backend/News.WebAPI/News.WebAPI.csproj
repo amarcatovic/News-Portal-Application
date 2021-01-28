@@ -20,10 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\News.Authentification\News.Authentification.csproj" />
     <ProjectReference Include="..\News.Category\News.Category.csproj" />
     <ProjectReference Include="..\News.Core\News.Core.csproj" />
     <ProjectReference Include="..\News.News\News.News.csproj" />

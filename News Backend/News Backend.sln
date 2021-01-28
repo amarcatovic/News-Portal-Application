@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News.Category", "News.Categ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News.News", "News.News\News.News.csproj", "{6F1624D4-800A-415C-AB01-93DEAA9AFFC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News.Authentification", "News.Authentification\News.Authentification.csproj", "{7AE7296C-8ECC-46C2-A50F-B26D2BE73D74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6F1624D4-800A-415C-AB01-93DEAA9AFFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F1624D4-800A-415C-AB01-93DEAA9AFFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F1624D4-800A-415C-AB01-93DEAA9AFFC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE7296C-8ECC-46C2-A50F-B26D2BE73D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE7296C-8ECC-46C2-A50F-B26D2BE73D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE7296C-8ECC-46C2-A50F-B26D2BE73D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE7296C-8ECC-46C2-A50F-B26D2BE73D74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

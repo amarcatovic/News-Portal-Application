@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Hosting;
-using News.WebAPI.Data;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -17,6 +16,7 @@ using System.Threading.Tasks;
 using News.Core.Models.Domain;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using News.Authentification;
 using News.Category;
 using News.Core.Interfaces;
 using News.Core.Interfaces.Repositories;
@@ -84,6 +84,7 @@ namespace News.WebAPI
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<IAuthentificationService, AuthentificationService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
@@ -115,6 +116,9 @@ namespace News.WebAPI
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 
