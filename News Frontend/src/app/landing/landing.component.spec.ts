@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { User } from '../shared/models/User';
 
 import { LandingComponent } from './landing.component';
 
@@ -21,5 +22,12 @@ describe('LandingComponent', () => {
 
   it('should be created', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display option to edit', () => {
+    component.user = new User();
+    fixture.detectChanges();
+    let compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('#edit-button').textContent).toContain('Edit');
   });
 });

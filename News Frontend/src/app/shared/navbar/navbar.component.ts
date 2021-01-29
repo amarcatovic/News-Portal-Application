@@ -47,6 +47,9 @@ export class NavbarComponent implements OnInit {
        this.authService.userLogedInSubject.subscribe(response => {
          this.user = response.user;
        });
+       this.authService.userLogOffSubject.subscribe(response => {
+         this.user = null;
+       });
      });
      this.location.subscribe((ev:PopStateEvent) => {
          this.lastPoppedUrl = ev.url;

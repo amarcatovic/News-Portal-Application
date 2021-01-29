@@ -5,20 +5,17 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'register',           component: SignupComponent },
+    { path: 'user-profile',     component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'news',          component: LandingComponent },
     { path: 'news/:categoryId',          component: LandingComponent },
-    { path: 'news/me/:mode',          component: MyNewsComponent },
-    { path: 'news/add-edit/:mode',          component: AddEditComponent },
+    { path: 'news/me/:mode',          component: MyNewsComponent, canActivate: [AuthGuard] },
+    { path: 'news/add-edit/:mode',          component: AddEditComponent, canActivate: [AuthGuard] },
     { path: 'login',          component: LoginComponent },
     { path: '', redirectTo: 'news', pathMatch: 'full' },
     { path: '**', redirectTo: 'news', pathMatch: 'full' }

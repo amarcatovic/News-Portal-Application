@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/models/User';
 import { CategoriesService } from '../shared/services/categories.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
     selector: 'app-landing',
@@ -27,7 +28,8 @@ export class LandingComponent implements OnInit {
     private newsService: NewsService,
     private categoriesService: CategoriesService,
     private route: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router,
+    private authService: AuthService,) { }
 
   ngOnInit() {
     if(this.cookieService.check('user')){
@@ -46,6 +48,10 @@ export class LandingComponent implements OnInit {
           this.newsList = response;
         });
       }
+    });
+
+    this.authService.userLogOffSubject.subscribe(response => {
+      this.user = null;
     });
   }
 

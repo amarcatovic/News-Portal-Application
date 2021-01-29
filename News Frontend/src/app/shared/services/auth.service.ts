@@ -13,6 +13,7 @@ import { User } from '../models/User';
 export class AuthService {
 
 @Output() userLogedInSubject: Subject<LoginResponse> = new Subject<LoginResponse>();
+@Output() userLogOffSubject: Subject<boolean> = new Subject<boolean>();
 
 constructor(private http: HttpClient, 
   private constants: ConstantsService,
@@ -41,6 +42,7 @@ public authenticateUser(email: string, passwordRaw: string): void{
  */
 public logUserOff(): void{
     this.cookieService.deleteAll();
+    this.userLogOffSubject.next(true);
     this.router.navigate(['/']);
 }
 
