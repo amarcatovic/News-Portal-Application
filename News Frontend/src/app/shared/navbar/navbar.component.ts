@@ -1,6 +1,11 @@
+import { AuthService } from './../services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
+import { CategoriesService } from './../services/categories.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
+import { Category } from '../models/Category';
+import { User } from '../models/User';
 
 @Component({
     selector: 'app-navbar',
@@ -12,7 +17,15 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    constructor(public location: Location, private router: Router) {
+    public user: User = null;
+
+    public categoriesArray: Category[] = [];
+
+    constructor(public location: Location, 
+        private router: Router,
+        private categoriesService: CategoriesService,
+        private cookieService: CookieService,
+        private authService: AuthService,) {
     }
 
     ngOnInit() {
@@ -28,10 +41,20 @@ export class NavbarComponent implements OnInit {
            } else
                window.scrollTo(0, 0);
        }
+       if(this.cookieService.check('user')){
+           this.user = JSON.parse(this.cookieService.get('user'));
+       }
+       this.authService.userLogedInSubject.subscribe(response => {
+         this.user = response.user;
+       });
      });
      this.location.subscribe((ev:PopStateEvent) => {
          this.lastPoppedUrl = ev.url;
      });
+
+     this.categoriesService.getCategories().subscribe(response => {
+         this.categoriesArray = response;
+     })
     }
 
     isHome() {
@@ -52,5 +75,13 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    /**
+     * Loggs user off
+     */
+    public logOff(): void{
+        this.authService.logUserOff();
+        this.router.navigate(['/']);
     }
 }
