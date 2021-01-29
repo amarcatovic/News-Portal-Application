@@ -1,0 +1,39 @@
+<section class="section-profile-cover section-shaped my-0">
+    <!-- Circles background -->
+    <div class="shape shape-style-1 shape-primary alpha-4">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container py-lg-md d-flex">
+        <div class="col px-0" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="display-3  text-white">My {{ mode }} News
+              </h1>
+            </div>
+          </div>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button [routerLink]="['/news/me/added']" routerLinkActive="router-link-active"  type="button" class="btn btn-secondary" [ngClass]="{active: mode === 'added'}">Added</button>
+            <button [routerLink]="['/news/me/edited']" type="button" class="btn btn-secondary" [ngClass]="{active: mode === 'edited'}">Edited</button>
+          </div>
+        </div>
+      </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+</section>
+<div class="card" *ngFor="let news of newsList">
+    <div class="card-body">
+      <h5 class="card-title">{{ news.title }}</h5>
+      <p class="card-text">{{ news.content }}</p>
+      <a (click)="editNews(news)" class="btn btn-primary" style="color: white;">Edit</a>
+    </div>
+</div>
