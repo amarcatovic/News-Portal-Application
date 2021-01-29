@@ -1,0 +1,26 @@
+.title{
+    font-size: 2rem;
+}
+
+.title-category{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title-category .badge{
+    margin-left: 10px;
+}
+
+.search{
+    margin-top: 20px;
+}
+
+.search label{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.news-item{
+    margin-bottom: 10px;
+}
