@@ -74,7 +74,7 @@ namespace News.News
         public async Task<bool> EditNewsAsync(int newsId, NewsCreateEditDto newsEditDto)
         {
             var news = _mapper.Map<Core.Models.Domain.News>(newsEditDto);
-            return await _newsRepository.EditNewsAsync(newsId, news) && _userEditedNewsRepository.AddUserEditAsync(newsEditDto.UserId, newsId) != null;
+            return await _newsRepository.EditNewsAsync(newsId, news) && await _userEditedNewsRepository.AddUserEditAsync(newsEditDto.UserId, newsId) != null;
         }
 
         /// <summary>
