@@ -28,7 +28,12 @@ export class AddEditComponent implements OnInit {
 
   mode: string;
 
-  form: FormGroup;
+  public form: FormGroup = this.fb.group({
+    title: ['', [Validators.required]],
+    content: ['', [Validators.required]],
+    categoryId: ['', [Validators.required]],
+    userId: ['', [Validators.required]]
+  });
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -38,6 +43,7 @@ export class AddEditComponent implements OnInit {
     private cookieService: CookieService,) { }
 
   ngOnInit(): void {
+
     this.mode = this.route.snapshot.params['mode'];
     if(this.mode === 'edit'){
       this.news = this.newsService.getNews();

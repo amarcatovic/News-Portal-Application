@@ -26,6 +26,7 @@ namespace News.Persistence.Repositories
         {
             return await _context.UserEditedNews
                 .Include(ued => ued.News)
+                .ThenInclude(n => n.Category)
                 .Include(ued => ued.User)
                 .Where(ued => ued.UserId == userId)
                 .ToListAsync();
