@@ -26,6 +26,7 @@
     "jw-bootstrap-switch-ng2": "2.0.5",
     "moment": "^2.29.1",
     "ng2-nouislider": "1.8.2",
+    "ngx-cookie-service": "^11.0.2",
     "nouislider": "14.6.3",
     "popper.js": "1.16.1",
     "rxjs": "6.6.3",

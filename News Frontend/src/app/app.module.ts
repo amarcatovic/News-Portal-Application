@@ -1,3 +1,4 @@
+import { FilterPipe } from './shared/pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,12 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddEditComponent } from './add-edit/add-edit.component';
+import { MyNewsComponent } from './my-news/my-news.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,10 @@ import { LoginComponent } from './login/login.component';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    FilterPipe,
+    AddEditComponent,
+    MyNewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +42,11 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { MyNewsComponent } from './my-news/my-news.component';
+import { AddEditComponent } from './add-edit/add-edit.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -13,18 +15,20 @@ const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
-    { path: 'landing',          component: LandingComponent },
+    { path: 'news',          component: LandingComponent },
+    { path: 'news/:categoryId',          component: LandingComponent },
+    { path: 'news/me/:mode',          component: MyNewsComponent },
+    { path: 'news/add-edit/:mode',          component: AddEditComponent },
     { path: 'login',          component: LoginComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: '', redirectTo: 'news', pathMatch: 'full' },
+    { path: '**', redirectTo: 'news', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
-      useHash: true
-    })
+    RouterModule.forRoot(routes)
   ],
   exports: [
   ],
