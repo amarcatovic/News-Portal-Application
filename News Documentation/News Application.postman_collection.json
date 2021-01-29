@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "e535382b-7704-478f-812a-85e72cad964b",
+		"name": "News Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"amar.catovic@news.com\",\r\n    \"passwordRaw\": \"Jakojakalozinka1\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44323/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44323/api/categories",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Category News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44323/api/categories/2/news",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"categories",
+						"2",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44323/api/news",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single News (By Id)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44323/api/news/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"news",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add News",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5YmU2MGMwOC02YzQ0LTRhNzQtYmZiYy1hNGNmM2RmYThmNzQiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MTE4NTA1NzAsImV4cCI6MTYxNDQ0MjU3MCwiaWF0IjoxNjExODUwNTcwfQ.UN347sGTMshA-TXB64OEu8wxPSyF1J14buQbE3QWzwL0SeP4jZ0oAe7JcUxIkECL50rKxfSiivK36Xbfgm-JHg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"NK Čelik Šampion\",\r\n    \"content\": \"NK Čelik Zenica je pobjednik Lige Prvaka 2021. godine\",\r\n    \"categoryId\": 2,\r\n    \"userId\": \"9be60c08-6c44-4a74-bfbc-a4cf3dfa8f74\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44323/api/news",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit News",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"NK Čelik Šampion\",\r\n    \"content\": \"NK Čelik Zenica je pobjednik Lige Prvaka 2021. godine. Čestitamo timu s Bilinog Polja\",\r\n    \"categoryId\": 2,\r\n    \"userId\": \"9be60c08-6c44-4a74-bfbc-a4cf3dfa8f74\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44323/api/news/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"news",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User Added News",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5YmU2MGMwOC02YzQ0LTRhNzQtYmZiYy1hNGNmM2RmYThmNzQiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MTE4NTA1NzAsImV4cCI6MTYxNDQ0MjU3MCwiaWF0IjoxNjExODUwNTcwfQ.UN347sGTMshA-TXB64OEu8wxPSyF1J14buQbE3QWzwL0SeP4jZ0oAe7JcUxIkECL50rKxfSiivK36Xbfgm-JHg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44323/api/news/9be60c08-6c44-4a74-bfbc-a4cf3dfa8f74/added",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"news",
+						"9be60c08-6c44-4a74-bfbc-a4cf3dfa8f74",
+						"added"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User Edited News",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5YmU2MGMwOC02YzQ0LTRhNzQtYmZiYy1hNGNmM2RmYThmNzQiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE2MTE4NTA1NzAsImV4cCI6MTYxNDQ0MjU3MCwiaWF0IjoxNjExODUwNTcwfQ.UN347sGTMshA-TXB64OEu8wxPSyF1J14buQbE3QWzwL0SeP4jZ0oAe7JcUxIkECL50rKxfSiivK36Xbfgm-JHg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44323/api/news/9be60c08-6c44-4a74-bfbc-a4cf3dfa8f74/edited",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44323",
+					"path": [
+						"api",
+						"news",
+						"9be60c08-6c44-4a74-bfbc-a4cf3dfa8f74",
+						"edited"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
